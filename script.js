@@ -1,19 +1,19 @@
 const produtosDiv = document.querySelector("#produtos")
 let quantidadeCompras = 0
+
 async function gerarProdutos() {
-    try{
+    try {
         const resposta = await fetch('https://fakestoreapi.com/products')
         const dados = await resposta.json()
 
-        dados.forEach((element)=>{
+        dados.forEach((element) => {
             const card = document.createElement("div")
             card.className = "card"
 
-            const id = element.id
-            
             const produtoA = document.createElement("a")
             produtoA.className = "produtoA"
             produtoA.href = "produto.html"
+
             const tituloProduto = document.createElement("h4")
             tituloProduto.className = "tituloProduto"
             tituloProduto.textContent = element.title
@@ -29,25 +29,37 @@ async function gerarProdutos() {
             const botaoComprar = document.createElement("button")
             botaoComprar.className = "botaoComprar"
             botaoComprar.textContent = "Comprar"
-            
+
+            // Atualiza o contador do carrinho ao clicar no botão
+            botaoComprar.addEventListener("click", () => {
+                botaoSinistro()
+            })
+
+            produtoA.addEventListener("click", () => {
+                localStorage.setItem("dadosProduto", element.id)
+            })
+
             produtoA.append(tituloProduto, fotoFoda, preco)
             card.append(produtoA, botaoComprar)
             produtosDiv.appendChild(card)
-            produtoA.addEventListener("click",()=>{
-                localStorage.setItem("dadosProduto",element.id)
-            })
-
         })
-        
-        
-        
-    }catch(error){
-        document.write("Deu erro oh pae")
+    } catch (error) {
+        console.error("Deu erro oh pae", error)
     }
 }
-function botaoSinistro(){
-    produtosDiv.innerHTML = ""
-    quantidadeCompras++
 
+function botaoSinistro() {
+    quantidadeCompras++
+    document.querySelector("#contadorCarrinho").textContent = quantidadeCompras
 }
+
+function carrinho() {
+    const carrinho = document.querySelector("#carrinho")
+    const carrinhoImg = document.createElement("img")
+    carrinhoImg.src = "shopping_cart.png"
+
+    carrinho.append(carrinhoImg)
+}
+
 gerarProdutos()
+carrinho()

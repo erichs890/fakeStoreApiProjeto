@@ -1,0 +1,112 @@
+.tituloH1 {
+    font-size: 48px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin: 40px 0;
+    text-align: center;
+    color: #f00;
+    text-shadow: 3px 3px 0 #900, 6px 6px 0 #600;
+}
+
+/* Estilo da grid de produtos */
+.produtos {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards se ajustem em múltiplas linhas, se necessário */
+    justify-content: center; /* Centraliza os cards horizontalmente */
+    gap: 20px; /* Espaço entre os cards */
+    padding: 0 20px; /* Espaço nas laterais */
+}
+
+/* Estilo do card */
+.card {
+    display: flex;
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    align-items: center; /* Centraliza os itens dentro do card */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    background-color: #333;
+    max-width: 300px; /* Largura máxima do card */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sangue no fundo */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 150%;
+    height: 150%;
+    background: url('blood-splat.png') no-repeat center center;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+/* Faz com que o conteúdo do card fique sobre as manchas de sangue */
+.card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Imagem do produto */
+.fotoFoda {
+    width: 100%; /* Faz com que a imagem ocupe toda a largura do card */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 10px; /* Bordas arredondadas */
+    border: 5px solid #f00; /* Borda vermelha */
+    margin-bottom: 10px; /* Espaço abaixo da imagem */
+}
+
+/* Estilo do nome e preço do produto */
+.infoProduto {
+    display: flex;
+    flex-direction: column; /* Organiza o nome e preço verticalmente */
+    align-items: center; /* Centraliza o texto */
+    gap: 5px; /* Espaço entre o nome e o preço */
+    text-align: center;
+}
+
+.tituloProduto {
+    font-size: 20px; /* Tamanho da fonte para o título do produto */
+    font-weight: bold;
+    color: #fff;
+}
+
+.preco {
+    font-size: 18px; /* Tamanho da fonte para o preço */
+    font-weight: bold;
+    color: #f00;
+}
+
+/* Estilo do botão de compra */
+.botaoComprar {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #900;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botaoComprar:hover {
+    background-color: #600;
+}
+
+/* Estilo do link do produto */
+.produtoA {
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+.descricao {
+    font-size: 14px;
+    color: #eee;
+    line-height: 1.6;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 10px;
+    max-width: 90%;
+}
